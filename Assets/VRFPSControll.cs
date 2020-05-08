@@ -6,9 +6,10 @@ public class VRFPSControll : MonoBehaviour
 {
     public Transform vrCamera;
     public float toggleAngle = 30.0f;
-    public float speed = 3.0f;
+    public float speed = 10.0f;
     public bool moveForward;
     public float jumpHeight = 500f;
+    public bool isSitting = false;
 
     private CharacterController cc;
     private AudioSource aSrc;
@@ -26,16 +27,14 @@ public class VRFPSControll : MonoBehaviour
     {
         cc = GetComponent<CharacterController>();
         aSrc = GetComponent<AudioSource>();
-        player = GameObject.Find("Player");
-
-        
+        player = GameObject.Find("Player");  
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (vrCamera.eulerAngles.x >= toggleAngle && vrCamera.eulerAngles.x < 90.0f)
+        //move forward   
+        if (vrCamera.eulerAngles.x >= toggleAngle && vrCamera.eulerAngles.x < 90.0f && !isSitting)
         {
             moveForward = true;
         }

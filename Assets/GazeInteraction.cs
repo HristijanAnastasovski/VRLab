@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class ButtonInteraction : MonoBehaviour
+public class GazeInteraction : MonoBehaviour
 {
     public float gazeTime = 2f;
     private float timer;
@@ -13,11 +13,16 @@ public class ButtonInteraction : MonoBehaviour
     public GameObject descriptionText;
     private bool showText = false;
     public TextMeshProUGUI descriptionButtonTitle;
+    public GameObject door;
+    public GameObject bench; 
+    private VRFPSControll fpsScript;
+    private Vector3 currentPlayerPosition;
 
     // Use this for initialization
     void Start()
     {
-
+       fpsScript = player.GetComponent<VRFPSControll>();
+       currentPlayerPosition = player.transform.position; 
     }
 
     // Update is called once per frame
@@ -63,6 +68,35 @@ public class ButtonInteraction : MonoBehaviour
         }
     }
 
+    public void InteractWithDoor()
+    {
+        if (door.transform.eulerAngles.y == 90.0f)
+        {
+            door.transform.Rotate(new Vector3(0, -90, 0));
+        } else
+        {
+            door.transform.Rotate(new Vector3(0, 90, 0));
+        }
+     
+    }
+
+    public void SitOrStandInteraction()
+    {
+        if (!fpsScript.isSitting)
+        {
+            //Sit down
+            fpsScript.isSitting = true;
+            currentPlayerPosition = player.transform.position;
+            Vector3 sittingPosition = new Vector3(bench.transform.position.x, bench.transform.position.y + 1, bench.transform.position.z);
+            player.transform.position = sittingPosition;
+        } else
+        {
+            //Stand up
+            fpsScript.isSitting = false;
+            player.transform.position = new Vector3(player.transform.position.x, currentPlayerPosition.y, player.transform.position.z + 2f);
+        }
+    }
+
     public void PointerEnter()
     {
         gazedAt = true;
@@ -72,6 +106,7 @@ public class ButtonInteraction : MonoBehaviour
     public void PointerExit()
     {
         gazedAt = false;
+        timer = 0;
         Debug.Log("PointerExit");
     }
 
