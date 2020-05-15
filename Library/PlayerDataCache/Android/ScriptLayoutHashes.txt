@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/anast/Desktop/VR/VROfficeBenchDoorInteraction.apk
+C:/Users/anast/Desktop/VR/VROfficeWithSoundEffects.apk
 SceneListBegin?
 Assets/Scenes/EmptyRoomScene.unity
 SceneListEnd?
@@ -204,3 +204,5 @@ f0077b931a26a7eeaf5e245c7ef51ec4 Assembly-CSharp.dll:.GvrPointerInputModule
 2b5ef7651d23bd906fca474c358a6d1f Assembly-CSharp.dll:EasySurvivalScripts.PlayerMovement
 719e5a8f63dda20dad1ba86875c22268 Assembly-CSharp.dll:GoogleVR.VideoDemo.AutoPlayVideo
 9ef0ed9504edb9d0914e240dee1b7846 Assembly-CSharp.dll:GoogleVR.Beta.GvrBetaControllerVisualMulti
+9254f77c2af38a8f6cbdbca811963f9c Assembly-CSharp.dll:.CamRotat
+74fe5914f00b2d75ce2663e3f4b9f9bb Assembly-CSharp.dll:.RadioInteraction
